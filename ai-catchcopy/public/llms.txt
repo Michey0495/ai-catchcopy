@@ -1,0 +1,27 @@
+# AI Catchcopy Generator
+
+> AIが商品・サービスに最適なキャッチコピーを5案自動生成するWebサービス
+
+## Overview
+AI Catchcopy Generatorは、商品名・説明・ターゲット・トーンを入力すると、AIが5つの異なるアプローチでキャッチコピーを生成するサービスです。
+
+## Features
+- 5案同時生成: 異なるコンセプトで5つのキャッチコピーを一度に生成
+- 5つのトーン: professional, casual, playful, elegant, bold
+- ワンタップコピー: 気に入ったコピーをタップで即座にクリップボードへ
+- SNSシェア: X(Twitter)、LINEでの共有
+- MCP Server: AIエージェントが直接利用可能
+
+## API Endpoints
+- POST /api/generate - キャッチコピー生成
+- GET /api/feed - 最近の生成一覧
+- POST /api/mcp - MCP Server (JSON-RPC 2.0)
+- GET /api/mcp - MCP Server ツール一覧
+
+## MCP Tools
+- generate_catchcopy: 商品情報からキャッチコピー5案を生成
+- get_recent_catchcopies: 最近の生成結果を取得
+- get_catchcopy_result: ID指定で結果を取得
+
+## Tech Stack
+Next.js 15, TypeScript, Tailwind CSS, Claude Haiku, Vercel KV

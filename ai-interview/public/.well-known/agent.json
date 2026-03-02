@@ -1,0 +1,64 @@
+{
+  "name": "AI模擬面接",
+  "description": "AI-powered mock interview evaluation service. Generates interview questions and evaluates candidate readiness with S/A/B/C/D ranking.",
+  "url": "https://interview.ezoai.jp",
+  "version": "1.0.0",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "provider": {
+    "organization": "Ghostfee",
+    "url": "https://github.com/Michey0495"
+  },
+  "documentationUrl": "https://interview.ezoai.jp/llms.txt",
+  "authentication": {
+    "schemes": ["none"]
+  },
+  "protocols": {
+    "mcp": {
+      "endpoint": "https://interview.ezoai.jp/api/mcp",
+      "version": "2024-11-05",
+      "tools": [
+        {
+          "name": "mock_interview",
+          "description": "Conduct an AI mock interview evaluation with S/A/B/C/D ranking",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "position": {
+                "type": "string",
+                "description": "Target job position"
+              },
+              "industry": {
+                "type": "string",
+                "description": "Target industry (optional)"
+              },
+              "experience": {
+                "type": "string",
+                "description": "Years of experience (optional)"
+              },
+              "selfpr": {
+                "type": "string",
+                "description": "Self-PR / strengths (optional)"
+              },
+              "motivation": {
+                "type": "string",
+                "description": "Motivation for applying (optional)"
+              }
+            },
+            "required": ["position"]
+          }
+        }
+      ]
+    }
+  },
+  "skills": [
+    {
+      "id": "mock-interview",
+      "name": "Mock Interview Evaluation",
+      "description": "Evaluate a candidate's interview readiness for a specific position",
+      "tags": ["interview", "career", "evaluation", "HR"]
+    }
+  ]
+}

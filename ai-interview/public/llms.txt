@@ -1,0 +1,73 @@
+# AI模擬面接 (AI Mock Interview)
+
+> AI-powered mock interview evaluation service
+
+## Overview
+AI模擬面接は、希望職種と自己PRを入力するだけで、AIが厳しい面接官として面接力を判定するサービスです。
+S~Dランクの5段階で面接準備度を評価し、具体的な改善アドバイスを提供します。
+
+## Features
+- 希望職種に基づくリアルな面接質問の生成
+- 各質問エリアごとの評価とスコア
+- S/A/B/C/D の5段階ランク判定
+- 合格見込み/要改善/厳しい の3段階判定
+- 具体的な改善アドバイス
+- 結果のシェア機能（X/リンクコピー）
+
+## Tech Stack
+- Next.js 15 (App Router)
+- TypeScript (strict)
+- Tailwind CSS
+- Claude Haiku (AI engine)
+- Vercel KV (data storage)
+
+## API
+### POST /api/interview
+Generate mock interview evaluation.
+
+Request:
+```json
+{
+  "position": "フロントエンドエンジニア",
+  "industry": "IT・Web",
+  "experience": "3年",
+  "selfpr": "React/TypeScriptの経験が豊富",
+  "motivation": "技術力を活かしてプロダクト開発に貢献したい"
+}
+```
+
+Response:
+```json
+{
+  "id": "abc123"
+}
+```
+
+Result available at: /result/{id}
+
+## MCP Server
+Endpoint: /api/mcp
+Protocol: JSON-RPC 2.0
+
+### Tool: mock_interview
+Conduct AI mock interview evaluation.
+
+Parameters:
+- position (string, required): Target job position
+- industry (string, optional): Target industry
+- experience (string, optional): Years of experience
+- selfpr (string, optional): Self-PR / strengths
+- motivation (string, optional): Motivation for applying
+
+## Pages
+- / - Home page with interview form
+- /result/{id} - Interview result with OGP
+
+## Links
+- Website: https://interview.ezoai.jp
+- Agent Card: https://interview.ezoai.jp/.well-known/agent.json
+- MCP Endpoint: https://interview.ezoai.jp/api/mcp
+- GitHub: https://github.com/Michey0495/ai-interview
+
+## Contact
+Ghostfee - https://github.com/Michey0495

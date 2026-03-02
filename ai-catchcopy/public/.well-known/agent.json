@@ -1,0 +1,35 @@
+{
+  "name": "AI Catchcopy Generator",
+  "description": "AIが商品・サービスに最適なキャッチコピーを5案自動生成するサービス",
+  "version": "1.0.0",
+  "url": "https://ai-catchcopy.ezoai.jp",
+  "provider": {
+    "organization": "Ghostfee",
+    "url": "https://github.com/Michey0495"
+  },
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "authentication": {
+    "schemes": []
+  },
+  "skills": [
+    {
+      "id": "generate-catchcopy",
+      "name": "キャッチコピー生成",
+      "description": "商品・サービスの情報からAIキャッチコピーを5案生成",
+      "tags": ["copywriting", "marketing", "ai"],
+      "examples": [
+        "「AI Catchcopy Generator」のキャッチコピーを生成して",
+        "カジュアルなトーンでキャッチコピーを作って"
+      ],
+      "inputModes": ["application/json"],
+      "outputModes": ["application/json"]
+    }
+  ],
+  "defaultInputModes": ["application/json"],
+  "defaultOutputModes": ["application/json"],
+  "documentationUrl": "https://ai-catchcopy.ezoai.jp/llms.txt",
+  "mcpEndpoint": "https://ai-catchcopy.ezoai.jp/api/mcp"
+}

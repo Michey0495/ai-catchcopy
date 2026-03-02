@@ -1,0 +1,35 @@
+{
+  "name": "AIマシュマロ",
+  "description": "匿名で質問するとAIキャラクター「マシュ」が個性的に回答するQ&Aサービス",
+  "url": "https://ai-marshmallow.ezoai.jp",
+  "version": "1.0.0",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "provider": {
+    "organization": "Ghostfee",
+    "url": "https://github.com/Michey0495"
+  },
+  "documentationUrl": "https://ai-marshmallow.ezoai.jp/llms.txt",
+  "authentication": {
+    "schemes": ["none"]
+  },
+  "defaultInputModes": ["text"],
+  "defaultOutputModes": ["text"],
+  "protocols": {
+    "mcp": {
+      "version": "2024-11-05",
+      "endpoint": "https://ai-marshmallow.ezoai.jp/api/mcp",
+      "transport": "streamable-http"
+    }
+  },
+  "skills": [
+    {
+      "id": "ask",
+      "name": "匿名質問",
+      "description": "匿名で質問を送信し、AIキャラクター「マシュ」から回答を得る",
+      "uri": "https://ai-marshmallow.ezoai.jp/api/mcp"
+    }
+  ]
+}
