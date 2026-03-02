@@ -1,0 +1,28 @@
+# 
+
+> {{DESCRIPTION}}
+
+## Overview
+ is a free web application built with Next.js, hosted at https://.ezoai.jp
+
+## Features
+- {{FEATURES}}
+
+## Technical Stack
+- Framework: Next.js 15 (App Router)
+- Language: TypeScript
+- Styling: Tailwind CSS + shadcn/ui
+- Hosting: Vercel
+- AI: Anthropic Claude API
+
+## API
+- POST /api/{{MAIN_ENDPOINT}} - Main functionality endpoint
+
+## Links
+- Website: https://.ezoai.jp
+- GitHub: https://github.com/Michey0495/
+- Agent Card: https://.ezoai.jp/.well-known/agent.json
+
+## Contact
+- Developer: Ghostfee
+- GitHub: https://github.com/Michey0495

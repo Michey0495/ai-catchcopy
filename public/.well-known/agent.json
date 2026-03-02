@@ -1,0 +1,28 @@
+{
+  "name": "",
+  "description": "{{DESCRIPTION}}",
+  "url": "https://.ezoai.jp",
+  "version": "1.0.0",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "provider": {
+    "organization": "Ghostfee",
+    "url": "https://github.com/Michey0495"
+  },
+  "documentationUrl": "https://.ezoai.jp/llms.txt",
+  "authentication": {
+    "schemes": ["none"]
+  },
+  "defaultInputModes": ["text"],
+  "defaultOutputModes": ["text"],
+  "skills": [
+    {
+      "id": "{{MAIN_SKILL}}",
+      "name": "{{SKILL_NAME}}",
+      "description": "{{SKILL_DESCRIPTION}}",
+      "uri": "https://.ezoai.jp/api/{{MAIN_ENDPOINT}}"
+    }
+  ]
+}
