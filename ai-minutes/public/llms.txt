@@ -1,0 +1,24 @@
+# AI議事録 - minutes.ezoai.jp
+
+## 概要
+AI議事録は、会議のメモや発言ログを入力するだけで、AIが構造化された議事録を自動生成するWebサービスです。
+
+## 機能
+- 会議メモ → 構造化議事録の自動生成
+- 要約、決定事項、アクションアイテム、重要ポイントの抽出
+- シェア可能な議事録URL
+- OGP画像の自動生成
+
+## API
+- POST /api/generate - 議事録を生成
+- GET /api/mcp - MCP Server（ツール一覧）
+- POST /api/mcp - MCP Server（ツール実行）
+
+## MCP Server
+エンドポイント: https://minutes.ezoai.jp/api/mcp
+利用可能なツール:
+- generate_minutes: 会議メモから議事録を生成
+- get_minutes: IDで議事録を取得
+
+## 技術スタック
+Next.js 15, TypeScript, Tailwind CSS, Claude Haiku, Vercel KV

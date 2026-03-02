@@ -1,0 +1,36 @@
+{
+  "name": "AI議事録",
+  "description": "会議のメモや発言ログからAIが構造化された議事録を自動生成するサービス。要約、決定事項、アクションアイテム、重要ポイントを抽出します。",
+  "url": "https://minutes.ezoai.jp",
+  "provider": {
+    "organization": "ezoai.jp"
+  },
+  "version": "1.0.0",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "authentication": {
+    "schemes": ["none"]
+  },
+  "skills": [
+    {
+      "id": "generate_minutes",
+      "name": "議事録生成",
+      "description": "会議メモから構造化された議事録を生成します",
+      "tags": ["meeting", "minutes", "ai", "productivity"],
+      "examples": [
+        "この会議メモから議事録を作成してください",
+        "ミーティングの発言ログを整理してください"
+      ]
+    },
+    {
+      "id": "get_minutes",
+      "name": "議事録取得",
+      "description": "生成済みの議事録をIDで取得します",
+      "tags": ["meeting", "minutes", "retrieve"]
+    }
+  ],
+  "defaultInputModes": ["text"],
+  "defaultOutputModes": ["text"]
+}
