@@ -70,7 +70,29 @@ export default function HomePage() {
           <h2 className="text-sm font-semibold text-slate-700">みんなの質問・回答</h2>
           <span className="text-xs text-slate-400">（匿名）</span>
         </div>
-        <Suspense fallback={<p className="text-sm text-slate-400">読み込み中…</p>}>
+        <Suspense fallback={
+          <div className="space-y-4">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="bg-white border rounded-xl p-5 space-y-4 animate-pulse">
+                <div className="flex gap-3">
+                  <div className="shrink-0 w-8 h-8 rounded-full bg-slate-100" />
+                  <div className="flex-1 space-y-2 pt-1">
+                    <div className="h-3 bg-slate-200 rounded w-3/4" />
+                    <div className="h-3 bg-slate-200 rounded w-1/2" />
+                  </div>
+                </div>
+                <div className="flex gap-3">
+                  <div className="shrink-0 w-8 h-8 rounded-full bg-pink-100" />
+                  <div className="flex-1 space-y-2 pt-1">
+                    <div className="h-3 bg-slate-200 rounded w-full" />
+                    <div className="h-3 bg-slate-200 rounded w-5/6" />
+                    <div className="h-3 bg-slate-200 rounded w-3/4" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        }>
           <RecentQAs />
         </Suspense>
       </div>

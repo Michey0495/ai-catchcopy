@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { toast } from "sonner";
 
 /**
  * フィードバックウィジェット - 全アプリに埋め込む
@@ -27,7 +28,7 @@ export function FeedbackWidget({ repoName }: { repoName: string }) {
         setMessage("");
       }, 2000);
     } catch {
-      alert("送信に失敗しました");
+      toast.error("送信に失敗しました");
     }
   };
 

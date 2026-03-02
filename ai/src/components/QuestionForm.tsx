@@ -8,6 +8,15 @@ import { Textarea } from "@/components/ui/textarea";
 
 const MAX_LENGTH = 280;
 
+const EXAMPLES = [
+  "失恋してつらい",
+  "仕事やめたい",
+  "なんで空は青いの？",
+  "友達に嫌なことを言われた",
+  "将来が不安",
+  "好きな人に告白したい",
+];
+
 export function QuestionForm() {
   const [value, setValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -54,6 +63,19 @@ export function QuestionForm() {
         className="resize-none text-sm"
         disabled={isLoading}
       />
+      <div className="flex flex-wrap gap-1.5">
+        {EXAMPLES.map((ex) => (
+          <button
+            key={ex}
+            type="button"
+            onClick={() => setValue(ex)}
+            className="text-xs bg-slate-100 hover:bg-slate-200 text-slate-500 rounded-full px-2.5 py-1 transition-colors"
+            disabled={isLoading}
+          >
+            {ex}
+          </button>
+        ))}
+      </div>
       <div className="flex items-center justify-between">
         <span className={`text-xs ${value.length > MAX_LENGTH * 0.9 ? "text-orange-500" : "text-slate-400"}`}>
           {value.length} / {MAX_LENGTH}

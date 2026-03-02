@@ -136,3 +136,37 @@
 ---
 
 **総評:** MVPとして本番リリース可能な品質。今回のRound 2でSEO・アクセシビリティ・SNSプレビューの細かな問題を追加修正。すべてのチェックリスト項目をクリア。
+
+---
+
+## Issues Found & Fixed (Round 3)
+
+**Date:** 2026-03-01 17:03
+**Tester:** Claude QA Agent (automated)
+
+Build: ✅ Passed | Lint: ✅ Passed
+
+### 11. FeedbackWidget — `alert()` を `toast.error()` に変更 [FIXED]
+- **Severity:** Low — UX 一貫性
+- **File:** `src/components/FeedbackWidget.tsx`
+- **Details:** フィードバック送信失敗時にネイティブ `alert()` を使用していた。sonner の `toast.error()` に統一。
+
+### 12. /api/feedback — JSON パースエラー未ハンドル [FIXED]
+- **Severity:** Low — 堅牢性
+- **File:** `src/app/api/feedback/route.ts`
+- **Details:** `request.json()` が不正なリクエストボディで例外を投げた場合、未キャッチで 500 エラーになっていた。try/catch を追加し 400 Bad Request を返すように修正。
+
+### 13. robots.ts — API ルートを disallow に追加 [FIXED]
+- **Severity:** Low — SEO
+- **File:** `src/app/robots.ts`
+- **Details:** `/api/*` エンドポイントがクローラーにインデックスされる可能性があった。`disallow: "/api/"` を追加。
+
+### 14. ホームページ Suspense fallback — スケルトンへ改善 [FIXED]
+- **Severity:** Low — UX 一貫性
+- **File:** `src/app/page.tsx`
+- **Details:** `RecentQAs` コンポーネントの Suspense fallback が単純なテキスト「読み込み中…」だった。ページレベルの `loading.tsx` と同じアニメーション付きスケルトンに変更し、視覚的な一貫性を確保。
+
+### 15. public/ — デフォルト Next.js SVG を削除 [FIXED]
+- **Severity:** Info — クリーンアップ
+- **Files:** `public/{file,globe,next,vercel,window}.svg`
+- **Details:** Next.js テンプレートのデフォルト SVG が残留していた。プロジェクトで参照されていないため削除。

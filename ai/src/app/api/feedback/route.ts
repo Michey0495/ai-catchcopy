@@ -5,7 +5,12 @@ import { NextRequest, NextResponse } from "next/server";
  * フィードバックを受け取り GitHub Issue として自動作成
  */
 export async function POST(request: NextRequest) {
-  const { type, message, repo } = await request.json();
+  let type: string, message: string, repo: string;
+  try {
+    ({ type, message, repo } = await request.json());
+  } catch {
+    return NextResponse.json({ error: "Invalid request" }, { status: 400 });
+  }
 
   if (!message?.trim()) {
     return NextResponse.json({ error: "Message required" }, { status: 400 });
