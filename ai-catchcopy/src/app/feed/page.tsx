@@ -1,48 +1,27 @@
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
 import type { Metadata } from "next";
-import type { FeedItem } from "@/types";
+import { FeedList } from "@/components/FeedList";
 
 export const metadata: Metadata = {
   title: "みんなの作品",
   description: "AIが生成したキャッチコピーの一覧",
 };
 
-function timeAgo(timestamp: number): string {
-  const diff = Date.now() - timestamp;
-  const seconds = Math.floor(diff / 1000);
-  if (seconds < 60) return `${seconds}秒前`;
-  const minutes = Math.floor(seconds / 60);
-  if (minutes < 60) return `${minutes}分前`;
-  const hours = Math.floor(minutes / 60);
-  if (hours < 24) return `${hours}時間前`;
-  const days = Math.floor(hours / 24);
-  return `${days}日前`;
-}
-
-async function getFeedItems(): Promise<FeedItem[]> {
+async function getInitialFeed() {
   try {
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-    const res = await fetch(`${siteUrl}/api/feed`, {
+    const res = await fetch(`${siteUrl}/api/feed?cursor=0&limit=20`, {
       next: { revalidate: 30 },
     });
-    if (!res.ok) return [];
+    if (!res.ok) return { items: [], nextCursor: null };
     return await res.json();
   } catch {
-    return [];
+    return { items: [], nextCursor: null };
   }
 }
 
-const toneLabels: Record<string, string> = {
-  professional: "プロフェッショナル",
-  casual: "カジュアル",
-  playful: "遊び心",
-  elegant: "エレガント",
-  bold: "大胆",
-};
-
 export default async function FeedPage() {
-  const items = await getFeedItems();
+  const { items, nextCursor } = await getInitialFeed();
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-12">
@@ -67,35 +46,7 @@ export default async function FeedPage() {
           </Link>
         </div>
       ) : (
-        <div className="space-y-3">
-          {items.map((item) => (
-            <Link
-              key={item.id}
-              href={`/result/${item.id}`}
-              className="block bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 transition-all duration-200 cursor-pointer"
-            >
-              <div className="flex items-start justify-between mb-2">
-                <p className="text-white font-bold">{item.productName}</p>
-                <div className="flex items-center gap-2 ml-4 shrink-0">
-                  <Badge variant="outline" className="border-cyan-400/30 text-cyan-400 text-xs">
-                    {toneLabels[item.tone] || item.tone}
-                  </Badge>
-                  <span className="text-white/30 text-xs">{timeAgo(item.createdAt)}</span>
-                </div>
-              </div>
-              <div className="space-y-1">
-                {item.catchcopies.slice(0, 2).map((text, i) => (
-                  <p key={i} className="text-white/60 text-sm truncate">
-                    {text}
-                  </p>
-                ))}
-                {item.catchcopies.length > 2 && (
-                  <p className="text-white/30 text-xs">+{item.catchcopies.length - 2}案</p>
-                )}
-              </div>
-            </Link>
-          ))}
-        </div>
+        <FeedList initialItems={items} initialNextCursor={nextCursor} />
       )}
     </div>
   );

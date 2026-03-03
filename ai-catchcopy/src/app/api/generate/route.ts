@@ -94,7 +94,7 @@ export async function POST(request: Request) {
       shareText: parsed.shareText,
     };
 
-    await kv.set(`catchcopy:${id}`, result, { ex: 60 * 60 * 24 * 30 });
+    await kv.set(`catchcopy:${id}`, result, { ex: 60 * 60 * 24 * 365 });
     await kv.zadd("catchcopy:feed", { score: now, member: id });
 
     return NextResponse.json({ id, shareText: parsed.shareText });
