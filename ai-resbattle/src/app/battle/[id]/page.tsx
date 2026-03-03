@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getBattle } from "@/lib/db";
 import { BattleResult } from "@/components/battle-result";
+import { LikeButton } from "@/components/LikeButton";
 
 export const dynamic = "force-dynamic";
 
@@ -59,6 +60,7 @@ export default async function BattlePage({ params }: Props) {
         {battle.restaurant2.name}
       </h1>
       <BattleResult battle={battle} url={url} />
+      <LikeButton id={id} />
     </div>
   );
 }

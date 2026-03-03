@@ -1,6 +1,6 @@
 import type { Battle } from "./types";
 
-const BATTLE_TTL = 60 * 60 * 24 * 30; // 30日
+const BATTLE_TTL = 60 * 60 * 24 * 365; // 365日
 
 const memoryStore = new Map<string, Battle>();
 const memoryList: string[] = [];
