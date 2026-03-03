@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getQuestion, getRecentQuestions } from "@/lib/storage";
 import { QACard } from "@/components/QACard";
 import { ShareButtons } from "@/components/ShareButtons";
+import { LikeButton } from "@/components/LikeButton";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
@@ -58,6 +59,10 @@ export default async function QAPage({ params }: Props) {
       </div>
 
       <QACard question={question} />
+
+      <div className="flex items-center gap-3">
+        <LikeButton id={id} />
+      </div>
 
       <div className="bg-white/5 rounded-xl border border-white/10 p-5 space-y-3">
         <p className="text-sm font-semibold text-white">シェアする</p>
